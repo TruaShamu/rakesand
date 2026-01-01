@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+canvas {
+    image-rendering: pixelated; 
+    box-shadow: 0 0 30px rgba(0,0,0,0.8);
+}
+
+#ui-layer {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #E6D8AD;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.controls {
+    margin-top: 10px;
+    pointer-events: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+button {
+    background: #C2B280;
+    border: none;
+    padding: 10px 15px;
+    color: #1a1a1a;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #E6D8AD;
+}
+
+button:disabled {
+    background: #444;
+    color: #888;
+    cursor: not-allowed;
+}
