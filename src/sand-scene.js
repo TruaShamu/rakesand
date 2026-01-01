@@ -105,16 +105,30 @@ class SandScene extends Phaser.Scene {
                        savedPath[0].x === savedPath[savedPath.length-1].x && 
                        savedPath[0].y === savedPath[savedPath.length-1].y;
 
-        for (let i = 0; i < savedPath.length; i++) {
-            const tile = savedPath[i];
-            this.grid[tile.x][tile.y] = { 
-                type: 'path',
-                index: i,
-                fullPath: savedPath,
-                isLoop: isLoop
-            };
-        }
+        this.animateRake(savedPath, isLoop);
         this.clearState();
+    }
+
+    animateRake(path, isLoop) {
+        let currentIndex = 0;
+        const delay = this.config.animation ? this.config.animation.stepDelay : 50;
+
+        this.time.addEvent({
+            delay: delay,
+            callback: () => {
+                if (currentIndex < path.length) {
+                    const tile = path[currentIndex];
+                    this.grid[tile.x][tile.y] = { 
+                        type: 'path',
+                        index: currentIndex,
+                        fullPath: path,
+                        isLoop: isLoop
+                    };
+                    currentIndex++;
+                }
+            },
+            repeat: path.length - 1
+        });
     }
 
     update() {

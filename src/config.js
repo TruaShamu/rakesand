@@ -20,6 +20,9 @@ const GARDEN_CONFIG = {
     ripples: {
         widths: [0.2, 0.45, 0.7, 0.95]
     },
+    animation: {
+        stepDelay: 75
+    },
     phaser: {
         width: 800,
         height: 600,
